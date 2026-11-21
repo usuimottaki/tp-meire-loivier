@@ -20,7 +20,6 @@ Aplicación web que consume la API pública de Rick and Morty para explorar sus 
 - [The Rick and Morty API](https://rickandmortyapi.com).
 
 ## Estructura del proyecto
-```
 tp-apellido-nombre/
 ├── index.html        Página principal
 ├── README.md         Documentación del proyecto
@@ -31,8 +30,6 @@ tp-apellido-nombre/
 │   └── app.js        Lógica: acceso a la API, renderizado y eventos
 └── img/
     └── captura.png   Captura usada en este README
-```
-
 ## Cómo ejecutarlo localmente
 1. Abrir `index.html` en el navegador (o con Live Server).
 
