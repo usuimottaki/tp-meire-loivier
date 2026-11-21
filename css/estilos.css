@@ -102,3 +102,11 @@ body {
 .favoritos li span { flex: 1; }
 .favoritos .vacio { color: var(--suave); border: none; background: none; }
 
+.pie {
+  text-align: center;
+  padding: 1.2rem 1rem;
+  color: var(--suave);
+  border-top: 1px solid var(--borde);
+  margin-top: 2rem;
+}
+.pie a { color: var(--acento); }
