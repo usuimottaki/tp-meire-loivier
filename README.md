@@ -8,6 +8,7 @@ Aplicación web que consume la API pública de Rick and Morty para explorar sus 
 - Listado de personajes con imagen, nombre, estado y especie.
 - Búsqueda por nombre y filtro por estado (vivo, muerto, desconocido).
 - Paginación con botones «Anterior» y «Siguiente».
+- Ventana de detalle de cada personaje: género, origen, ubicación actual y lista de episodios en los que aparece (endpoints `/character/{id}` y `/episode/{ids}`).
 - Favoritos guardados en `localStorage`, con opción de quitarlos.
 - Indicador de carga, mensaje cuando no hay resultados y mensaje de error si falla la conexión.
 - Número de versión visible en el pie de página.

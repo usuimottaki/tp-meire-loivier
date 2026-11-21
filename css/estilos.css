@@ -1,0 +1,210 @@
+:root {
+  --fondo: #0f1419;
+  --superficie: #1a222b;
+  --borde: #2c3844;
+  --texto: #e6edf3;
+  --texto-suave: #9aa7b4;
+  --acento: #97ce4c;
+  --acento-oscuro: #6fa32d;
+  --vivo: #55cc44;
+  --muerto: #d63d2e;
+  --desconocido: #9e9e9e;
+  --radio: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--acento); }
+
+/* Cabecera y pie */
+.cabecera {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #14202b, #1f3a1f);
+  border-bottom: 3px solid var(--acento);
+}
+.cabecera h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--acento); }
+
+.pie {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borde);
+  font-size: 0.9rem;
+}
+
+.contenedor { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+/* Formulario de búsqueda */
+.busqueda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  padding: 1rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+.campo { display: flex; flex-direction: column; gap: 0.3rem; flex: 1 1 200px; }
+.campo label { font-size: 0.85rem; color: var(--texto-suave); }
+.campo input, .campo select {
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  color: var(--texto);
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+.campo input:focus, .campo select:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
+
+/* Botones */
+.btn {
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover:not(:disabled) { border-color: var(--acento); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.btn-primario { background: var(--acento); color: #0f1419; border-color: var(--acento); font-weight: 600; }
+.btn-primario:hover:not(:disabled) { background: var(--acento-oscuro); }
+.btn-chico { padding: 0.35rem 0.7rem; font-size: 0.85rem; }
+.btn-activo { color: #ffd54a; border-color: #ffd54a; }
+
+.enlace {
+  padding: 0;
+  font: inherit;
+  color: var(--texto);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+.enlace:hover { color: var(--acento); text-decoration: underline; }
+
+/* Mensajes */
+.mensaje { min-height: 1.5em; margin: 1rem 0; color: var(--texto-suave); }
+.mensaje:empty { margin: 0.5rem 0; }
+.mensaje.error { color: #ff7b72; }
+.mensaje.cargando::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: -0.15em;
+  border: 2px solid var(--borde);
+  border-top-color: var(--acento);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Grilla de personajes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.grid[aria-busy="true"] { opacity: 0.5; }
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  transition: transform 0.15s, border-color 0.15s;
+}
+.tarjeta:hover { transform: translateY(-3px); border-color: var(--acento); }
+.tarjeta-imagen { padding: 0; border: none; background: none; cursor: pointer; }
+.tarjeta-imagen img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.tarjeta-cuerpo { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.9rem; flex: 1; }
+.tarjeta-cuerpo h3 { margin: 0; font-size: 1.1rem; }
+.tarjeta-acciones { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.4rem; }
+
+.estado { margin: 0; font-size: 0.9rem; color: var(--texto-suave); }
+.punto { display: inline-block; width: 0.6em; height: 0.6em; margin-right: 0.4em; border-radius: 50%; background: var(--desconocido); }
+.estado-alive .punto { background: var(--vivo); }
+.estado-dead .punto { background: var(--muerto); }
+
+/* Paginación */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+#pagina-info { color: var(--texto-suave); }
+
+/* Favoritos */
+.favoritos {
+  padding: 1rem 1.25rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+.favoritos h2 { margin-top: 0; font-size: 1.3rem; }
+#favoritos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+#favoritos li { display: flex; align-items: center; gap: 0.75rem; }
+#favoritos li img { border-radius: 50%; }
+#favoritos li .enlace { flex: 1; }
+#favoritos .vacio { color: var(--texto-suave); }
+
+/* Detalle del personaje */
+.detalle {
+  width: min(640px, calc(100% - 2rem));
+  max-height: 85vh;
+  padding: 1.5rem;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+.detalle::backdrop { background: rgb(0 0 0 / 0.7); }
+.cerrar {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--texto-suave);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.cerrar:hover { color: var(--texto); }
+.detalle-cabecera { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.detalle-cabecera img { border-radius: var(--radio); }
+.detalle h2 { margin: 0 0 0.5rem; color: var(--acento); }
+.detalle h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; }
+.datos { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 1rem; margin: 0; }
+.datos dt { color: var(--texto-suave); }
+.datos dd { margin: 0; }
+.episodios { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+.episodios small { color: var(--texto-suave); }
+.codigo {
+  display: inline-block;
+  min-width: 4.5em;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  color: var(--acento);
+}
