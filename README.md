@@ -20,7 +20,7 @@ Aplicación web que consume la API pública de Rick and Morty para explorar sus 
 
 ## Estructura del proyecto
 ```
-tp-apellido-nombre/
+tp-meire-olivier/
 ├── index.html        Página principal
 ├── README.md         Documentación del proyecto
 ├── .gitignore        Archivos excluidos del repositorio
