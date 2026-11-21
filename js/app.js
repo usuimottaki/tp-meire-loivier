@@ -5,6 +5,12 @@ const ESTADOS = { alive: "Vivo", dead: "Muerto", unknown: "Desconocido" };
 
 const lista = document.getElementById("lista");
 const mensaje = document.getElementById("mensaje");
+const formBusqueda = document.getElementById("form-busqueda");
+const inputNombre = document.getElementById("nombre");
+const selectEstado = document.getElementById("filtro-estado");
+const btnAnterior = document.getElementById("btn-anterior");
+const btnSiguiente = document.getElementById("btn-siguiente");
+const paginaInfo = document.getElementById("pagina-info");
 
 const filtros = { nombre: "", estado: "" };
 let paginaActual = 1;
@@ -92,10 +98,41 @@ async function cargarPersonajes() {
     );
   } finally {
     establecerCargando(false);
+    actualizarPaginacion();
   }
   return exito;
 }
 
+/* ---------- Búsqueda y paginación ---------- */
+
+function actualizarPaginacion() {
+  paginaInfo.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+  btnAnterior.disabled = paginaActual <= 1;
+  btnSiguiente.disabled = paginaActual >= totalPaginas;
+}
+
+function manejarBusqueda(evento) {
+  evento.preventDefault();
+  if (cargando) return;
+  filtros.nombre = inputNombre.value.trim();
+  filtros.estado = selectEstado.value;
+  paginaActual = 1;
+  cargarPersonajes();
+}
+
+async function cambiarPagina(cambio) {
+  if (cargando) return;
+  paginaActual += cambio;
+  const exito = await cargarPersonajes();
+  if (!exito) {
+    paginaActual -= cambio; // si falla, se conserva la página anterior
+    actualizarPaginacion();
+  }
+}
+
+formBusqueda.addEventListener("submit", manejarBusqueda);
+btnAnterior.addEventListener("click", () => cambiarPagina(-1));
+btnSiguiente.addEventListener("click", () => cambiarPagina(1));
 
 
 /* ---------- Inicio ---------- */

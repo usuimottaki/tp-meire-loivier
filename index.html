@@ -12,10 +12,31 @@
   </header>
 
   <main class="contenedor">
+    <form id="form-busqueda" class="busqueda">
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="search" id="nombre" placeholder="Ej.: Rick" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="filtro-estado">Estado</label>
+        <select id="filtro-estado">
+          <option value="">Todos</option>
+          <option value="alive">Vivo</option>
+          <option value="dead">Muerto</option>
+          <option value="unknown">Desconocido</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primario">Buscar</button>
+    </form>
 
     <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
     <section id="lista" class="grid" aria-label="Personajes"></section>
 
+    <nav class="paginacion" aria-label="Paginación">
+      <button type="button" id="btn-anterior" class="btn">Anterior</button>
+      <span id="pagina-info">Página 1 de 1</span>
+      <button type="button" id="btn-siguiente" class="btn">Siguiente</button>
+    </nav>
 
   </main>
 

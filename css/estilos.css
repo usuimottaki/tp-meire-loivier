@@ -64,5 +64,23 @@ body {
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-primario { background: var(--acento); border-color: var(--acento); color: #052e16; font-weight: 600; }
 
+.busqueda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+.campo { display: flex; flex-direction: column; flex: 1; min-width: 160px; }
+.campo label { font-size: 0.85rem; color: var(--suave); margin-bottom: 0.2rem; }
+.campo input, .campo select {
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--borde);
+  background: var(--tarjeta);
+  color: var(--texto);
+  font-size: 1rem;
+}
+.paginacion { display: flex; justify-content: center; align-items: center; gap: 1rem; margin: 1.5rem 0; }
 
 
