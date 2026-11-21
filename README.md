@@ -3,7 +3,9 @@
 Aplicación web que consume la API pública de Rick and Morty para explorar sus personajes. Permite buscar por nombre, filtrar por estado, navegar por páginas y guardar personajes favoritos que se conservan al recargar la página.
 
 **Autor:** Olivier Meire · Fundamentos de Desarrollo Web · UCSA
-
+## Sitios publicados
+- GitHub Pages: https://github.com/usuimottaki/tp-meire-loivier
+- Vercel / Netlify: https://vercel.com/olivier-meire/tp-meire-loivier / https://app.netlify.com/projects/tp-meire-loivier
 ## Funcionalidades
 - Listado de personajes con imagen, nombre, estado y especie.
 - Búsqueda por nombre y filtro por estado (vivo, muerto, desconocido).
