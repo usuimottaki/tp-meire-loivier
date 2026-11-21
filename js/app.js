@@ -98,6 +98,9 @@ async function cargarPersonajes() {
     totalPaginas = datos.info.pages || 1;
     renderizarPersonajes(datos.results);
     mostrarMensaje("");
+    if (datos.results.length === 0) {
+      mostrarMensaje("No se encontraron personajes con esos filtros.");
+    }
     exito = true;
   } catch (error) {
     const sinConexion = error instanceof TypeError;
